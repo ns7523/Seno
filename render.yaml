@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: autonomous-gmail-ai-agent
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:////data/agent.db
+      - key: GMAIL_TOKEN_FILE
+        value: /etc/secrets/token.json
+      - key: GMAIL_CLIENT_SECRETS_FILE
+        value: /etc/secrets/client_secret.json
+      - key: GMAIL_USER_ID
+        value: me
+      - key: GMAIL_POLL_INTERVAL_SECONDS
+        value: "60"
+      - key: ENABLE_INBOX_MONITOR
+        value: "true"
+      - key: GOOGLE_CALENDAR_ENABLED
+        value: "true"
+      - key: GOOGLE_CALENDAR_ID
+        value: primary
+      - key: LLM_PROVIDER
+        value: groq
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: PUBLIC_EMAIL
+        value: contact@nsakash.in
+      - key: PERSONAL_EMAIL
+        value: nsakash752003@gmail.com
+      - key: GROQ_API_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        generateValue: true
+      - key: DIAGNOSTICS_SECRET
+        generateValue: true
+      - key: ADMIN_SECRET
+        generateValue: true
+    disk:
+      name: gmail-agent-data
+      mountPath: /data
+      sizeGB: 1

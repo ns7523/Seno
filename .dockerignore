@@ -1,0 +1,13 @@
+.git/
+.pytest_cache/
+__pycache__/
+**/__pycache__/
+.DS_Store
+.env
+.venv/
+venv/
+agent.db
+token.json
+**/token.json
+client_secret.json
+**/client_secret*.json
