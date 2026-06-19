@@ -209,7 +209,6 @@ See `.env.example` for all supported variables. In production, these are require
 - Per-sender custom reply style memory.
 - Vector memory for long-running relationships.
 
---
 
 <div align="center">
 
